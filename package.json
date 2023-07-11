@@ -1,0 +1,14 @@
+{
+  "name": "top--binary-search-trees",
+  "version": "1.0.0",
+  "description": "first creation of a binary tree with TOP",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "ioanaj1",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}
