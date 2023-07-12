@@ -27,7 +27,7 @@ class Tree{
                 else if (node.leftNode === null) return node.rightNode
                     else if (node.rightNode === null) return node.leftNode;
                         else {
-                            let replacementValue=this.findReplacement(node.rightNode);
+                            let replacementValue=this.findNextBiggest(node.rightNode);
                             this.delete(replacementValue.d);
                             node.d=replacementValue.d;
                             return node;
@@ -38,14 +38,31 @@ class Tree{
         return node;
     }
 
-    findReplacement(node){
+    findNextBiggest(node){
         if (node.leftNode === null) return node  
-            else return this.findReplacement(node.leftNode);       
+            else return this.findNextBiggest(node.leftNode);       
     }
 
-    find(value){
-
+    find(value, node=this.root){
+        if (value === node.d) return node;
+        if (value < node.d) return this.find(value, node.leftNode)
+            else return this.find(value, node.rightNode)
     }
+
+    levelOrder(inputFunction=this.createArray, queue=[this.root]){
+        let resultsArray=[];
+        while (queue.length != 0)
+            {   resultsArray.push(inputFunction(queue[0]));
+                if (queue[0].leftNode != null) queue.push(queue[0].leftNode);
+                if (queue[0].rightNode != null) queue.push(queue[0].rightNode);
+                queue.shift();
+            }
+        return resultsArray;
+        }
+
+    createArray(node)
+       {return node.d; }
+         
 }
 
 export {Tree}
