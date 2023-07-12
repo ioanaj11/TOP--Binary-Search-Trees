@@ -60,6 +60,16 @@ class Tree{
         return resultsArray;
         }
 
+    levelOrderRecursive(inputFunction=this.createArray, queue=[this.root], resultsArray=[]){
+        if (queue.length === 0) return resultsArray;
+        
+        resultsArray.push(inputFunction(queue[0]));
+        if (queue[0].leftNode != null) queue.push(queue[0].leftNode);
+        if (queue[0].rightNode != null) queue.push(queue[0].rightNode);
+        queue.shift();
+        return this.levelOrderRecursive(inputFunction, queue, resultsArray)
+    }
+
     createArray(node)
        {return node.d; }
          

@@ -19,4 +19,6 @@ function divideByTwo(node){
 }
 
 console.log(test.levelOrder());
+console.log(test.levelOrderRecursive());
 console.log(test.levelOrder(divideByTwo));
+console.log(test.levelOrderRecursive(divideByTwo));
