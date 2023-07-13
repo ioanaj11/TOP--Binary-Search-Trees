@@ -72,6 +72,33 @@ class Tree{
 
     createArray(node)
        {return node.d; }
+
+    preOrder(inputFunction=this.createArray, node=this.root, resultsArray=[]){
+        if (node != null)
+            { resultsArray.push(inputFunction(node));
+              this.preOrder(inputFunction, node.leftNode, resultsArray);
+              this.preOrder(inputFunction, node.rightNode, resultsArray);
+            }   
+        return resultsArray;
+    }
+
+    inOrder(inputFunction=this.createArray, node=this.root, resultsArray=[]){
+        if (node != null)
+            { this.inOrder(inputFunction, node.leftNode, resultsArray);
+              resultsArray.push(inputFunction(node));
+              this.inOrder(inputFunction, node.rightNode, resultsArray);
+            }   
+        return resultsArray;
+    }
+
+    postOrder(inputFunction=this.createArray, node=this.root, resultsArray=[]){
+        if (node != null)
+            { this.postOrder(inputFunction, node.leftNode, resultsArray);
+              this.postOrder(inputFunction, node.rightNode, resultsArray);
+              resultsArray.push(inputFunction(node));
+            }   
+        return resultsArray;
+    }
          
 }
 
