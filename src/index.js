@@ -18,15 +18,33 @@ function divideByTwo(node){
     return node.d/2;
 }
 
-console.log(test.levelOrder());
-console.log(test.levelOrderRecursive());
-console.log(test.levelOrder(divideByTwo));
-console.log(test.levelOrderRecursive(divideByTwo));
-console.log(test.preOrder());
-console.log(test.preOrder(divideByTwo));
+//console.log(test.levelOrder());
+//console.log(test.levelOrderRecursive());
+//console.log(test.levelOrder(divideByTwo));
+//console.log(test.levelOrderRecursive(divideByTwo));
+//console.log(test.preOrder());
+//console.log(test.preOrder(divideByTwo));
+//
+//console.log(test.inOrder());
+//console.log(test.inOrder(divideByTwo));
+//
+//console.log(test.postOrder());
+//console.log(test.postOrder(divideByTwo));
 
-console.log(test.inOrder());
-console.log(test.inOrder(divideByTwo));
+ 
 
-console.log(test.postOrder());
-console.log(test.postOrder(divideByTwo));
+ 
+ console.log(test.isBalanced());
+
+ test.insert(600);
+ test.insert(700);
+ prettyPrint(test.root);
+ console.log(test.isBalanced());
+
+ let value=test.find(500);
+ 
+ console.log(test.isBalanced(value));
+
+ test.rebalance();
+ prettyPrint(test.root);
+ console.log(test.isBalanced());

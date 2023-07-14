@@ -44,9 +44,10 @@ class Tree{
     }
 
     find(value, node=this.root){
+        if (node === null) return "Value not found";
         if (value === node.d) return node;
-        if (value < node.d) return this.find(value, node.leftNode)
-            else return this.find(value, node.rightNode)
+        if (value < node.d) return this.find(value, node.leftNode);
+            else if (value > node.d) return this.find(value, node.rightNode);
     }
 
     levelOrder(inputFunction=this.createArray, queue=[this.root]){
@@ -99,7 +100,37 @@ class Tree{
             }   
         return resultsArray;
     }
-         
+
+    height(node=this.root){
+        if (node != null) 
+            { let leftHeight=this.height(node.leftNode);
+              let rightHeight=this.height(node.rightNode);
+              return Math.max(leftHeight, rightHeight )+1; 
+            }
+        return -1;
+    }
+     
+    depth(node, treeValue=this.root, depth=0){
+        if (node === treeValue) return depth;
+        if (node.d < treeValue.d) return this.depth(node, treeValue.leftNode,depth)+1;
+        if (node.d>treeValue.d) return this.depth(node, treeValue.rightNode)+1;
+    }
+
+    isBalanced(node=this.root){
+        let difference=Math.abs(this.height(node.leftNode)-this.height(node.rightNode));
+        if (difference>1) return false;
+
+        if (node.leftNode != null) return this.isBalanced(node.leftNode);
+        if (node.rightNode !=null) return this.isBalanced(node.rightNode);
+        
+        return true;
+    }
+
+    rebalance(){
+        let newarray=this.inOrder();
+        this.root=buildTree(newarray, 0, newarray.length-1);
+        return this.root;
+    }
 }
 
 export {Tree}
