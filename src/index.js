@@ -1,50 +1,45 @@
 import { prettyPrint } from './prettyPrint';
 import {Tree} from './Tree.js';
 
-let test=new Tree([100, 20, 500, 10, 30, 34, 49, 65,43, 75, 53]);
 
+
+//Create a binary search tree from an array of random numbers < 100
+let test=new Tree([100, 20, 10, 30, 34, 49, 65,43, 75, 53]);
+
+//print a visual representation of the tree
 prettyPrint(test.root);
 
-test.insert(5);
+//Confirm that the tree is balanced by calling isBalanced.
+console.log(test.isBalanced());
 
+//Print out all elements in level, pre, post, and in order.
+console.log(test.levelOrder());
+console.log(test.preOrder());
+console.log(test.postOrder());
+console.log(test.inOrder());
+
+//Unbalance the tree by adding several numbers > 100.
+test.insert(101);
+test.insert(102);
+test.insert(200);
+
+//Confirm that the tree is unbalanced by calling isBalanced.
+console.log(test.isBalanced());
+
+//print a visual representation of the tree
 prettyPrint(test.root);
 
-test.delete(34);
+//Balance the tree by calling rebalance.
+test.rebalance();
+
+//Confirm that the tree is balanced by calling isBalanced.
+console.log(test.isBalanced());
+
+//Print out all elements in level, pre, post, and in order.
+console.log(test.levelOrder());
+console.log(test.preOrder());
+console.log(test.postOrder());
+console.log(test.inOrder());
+
+//print a visual representation of the tree
 prettyPrint(test.root);
-
-console.log(test.find(100));
-
-function divideByTwo(node){
-    return node.d/2;
-}
-
-//console.log(test.levelOrder());
-//console.log(test.levelOrderRecursive());
-//console.log(test.levelOrder(divideByTwo));
-//console.log(test.levelOrderRecursive(divideByTwo));
-//console.log(test.preOrder());
-//console.log(test.preOrder(divideByTwo));
-//
-//console.log(test.inOrder());
-//console.log(test.inOrder(divideByTwo));
-//
-//console.log(test.postOrder());
-//console.log(test.postOrder(divideByTwo));
-
- 
-
- 
- console.log(test.isBalanced());
-
- test.insert(600);
- test.insert(700);
- prettyPrint(test.root);
- console.log(test.isBalanced());
-
- let value=test.find(500);
- 
- console.log(test.isBalanced(value));
-
- test.rebalance();
- prettyPrint(test.root);
- console.log(test.isBalanced());

@@ -118,12 +118,12 @@ class Tree{
 
     isBalanced(node=this.root){
         let difference=Math.abs(this.height(node.leftNode)-this.height(node.rightNode));
-        if (difference>1) return false;
+        if (difference>1) return "Tree is not balanced";
 
         if (node.leftNode != null) return this.isBalanced(node.leftNode);
         if (node.rightNode !=null) return this.isBalanced(node.rightNode);
         
-        return true;
+        return "Tree is balanced";
     }
 
     rebalance(){
